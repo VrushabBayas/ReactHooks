@@ -3,6 +3,8 @@ import Joke from "./Joke";
 import Stories from "./Stories";
 import Tasks from "./Tasks";
 import Gallery from "./Gallery";
+import Matrix from "./Matrix";
+
 function App() {
   const [userQuery, setUserQuery] = useState("");
   const [showGallery, setShowGallery] = useState(false);
@@ -36,6 +38,8 @@ function App() {
         <button onClick={searchQuery}>Search</button>
       </div>
       <hr />
+      <Matrix></Matrix>
+      <hr/>
       <div>
         {
           showGallery?<Gallery/>:null
