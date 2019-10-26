@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import MATRIX_FRAMES from './data/matrix';
 import { useDynamicTransition } from './hooks';
-const SECONDS = 1000;
+
 const MINIMUM_DELAY = 10;
 const MINIMUM_INCREMENT = 1;
 function Matrix() {

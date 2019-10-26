@@ -38,6 +38,9 @@ function App() {
         <button onClick={searchQuery}>Search</button>
       </div>
       <hr />
+      <Tasks></Tasks>
+      <hr />
+      
       <Matrix></Matrix>
       <hr/>
       <div>
@@ -51,8 +54,7 @@ function App() {
 
       <hr />
       <Joke />
-      <hr />
-      <Tasks></Tasks>
+     
       <hr />
       <Stories />
     </div>
