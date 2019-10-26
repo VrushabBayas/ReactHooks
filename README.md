@@ -1,8 +1,5 @@
 ### React Hooks Tutorial - Master React Hooks Development
 
-The official code for the *React Hooks Tutorial - Master React Hooks Development* course on Udemy by David Katz.
-
-Check out the course: [http://udemy.com/react-hooks-tutorial](http://udemy.com/react-hooks-tutorial)
 
 React Hooks are the biggest update to React that the framework has ever seen. In short, they're a way for function components to "hook" into React functionality. With hooks, you may never write a class-based React compnent again!
 
