@@ -1,25 +1,25 @@
-import PubNub from 'pubnub';
-import pubnubConfig from './pubnub.config';
+import PubNub from "pubnub";
 
-export const MESSAGE_CHANNEL = 'MESSAGE_CHANNEL';
+import pubnubConfig from "./pubnub.config";
 
-function PubSub() {
+export const MESSGAE_CHANNEL = "MESSAGE_CHANNEL";
+
+export default function PubSub() {
   const pubnub = new PubNub(pubnubConfig);
 
-  pubnub.subscribe({ channels: [MESSAGE_CHANNEL] });
+  pubnub.subscribe({ channels: [MESSGAE_CHANNEL] });
 
   this.addListener = listenerConfig => {
     pubnub.addListener(listenerConfig);
-  }
+  };
 
   this.publish = message => {
-    console.log('publish message', message);
-    
+    console.log("message: ", message);
     pubnub.publish({
-      message,
-      channel: MESSAGE_CHANNEL
+      message: message,
+      channel: MESSGAE_CHANNEL
     });
-  }
+  };
 }
 
-export default PubSub;
+// setTimeout(() => {}, 1000);

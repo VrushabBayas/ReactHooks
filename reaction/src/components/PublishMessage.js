@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
-import { useAppContext } from './hooks';
-import { newMessage } from '../state/actions';
+import React, { useState } from "react";
 
-function PublishMessage() {
-  const { state: { username }, pubsub: { publish } } = useAppContext();
-  const [text, setText] = useState('');
+import { newMessage } from "../state/actions";
+import { useAppContext } from "./hooks";
 
-  const updateText = event => {
-    setText(event.target.value);
-  }
+export default function PublishMessage() {
+  const {
+    pubsub: { publish },
+    state: { userName }
+  } = useAppContext();
 
+  const [text, setText] = useState("");
+  const onUpdateText = e => {
+    setText(e.target.value);
+  };
+  const handleKeyPress = e => {
+    if (e.key === "Enter") {
+      publishMessage();
+    }
+  };
   const publishMessage = () => {
-    publish(newMessage({ text, username }));
-  }
-
-  const handleKeyPress = event => {
-    if (event.key === 'Enter') publishMessage();
-  }
-
+    publish(newMessage({ text, userName }));
+  };
   return (
     <div>
-      <h3>Got something to say?</h3>
-      <input value={text} onChange={updateText} onKeyPress={handleKeyPress} />
-      {' '}
-      <button onClick={publishMessage}>Publish it!</button>
+      <h3>Got Something to say?</h3>
+      <input value={text} onChange={onUpdateText} onKeyPress={handleKeyPress} />
+      <button onClick={publishMessage}>Publish it</button>
     </div>
-  )
+  );
 }
-
-export default PublishMessage;

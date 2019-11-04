@@ -1,16 +1,15 @@
-import { NEW_MESSAGE, SET_USERNAME } from './types';
-import uuid from 'uuid/v4';
+import { NEW_MESSAGE, SET_USERNAME } from "./types";
+import uuid from "uuid/v4";
 
-export const newMessage = ({ text, username }) => ({
+export const newMessage = ({ text, userName }) => ({
   type: NEW_MESSAGE,
-  item: { id: uuid(), text, username, timestamp: Date.now() }
+  item: { id: uuid(), text, userName, timeStamp: Date.now() }
 });
-
-export const setUsername = username => ({
-  type: SET_USERNAME, username
+export const setUsername = userName => ({
+  type: SET_USERNAME,
+  userName
 });
-
-export const createReaction = ({ type, emoji, username, messageId }) => ({
+export const createReaction = ({ type, emoji, userName, messageId }) => ({
   type,
-  item: { id: uuid(), timestamp: Date.now(), emoji, username, messageId }
+  item: { id: uuid(), timestamp: Date.now(), emoji, userName, messageId }
 });

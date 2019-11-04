@@ -1,33 +1,35 @@
-import React, { useReducer, useEffect } from 'react';
-import reducer, { initialState } from '../state/reducer';
-import Context from '../context';
-import PubSub from '../pubsub';
-import PublishMessage from './PublishMessage';
-import MessageBoard from './MessageBoard';
-import SetUsername from './SetUsername';
+import React, { useReducer, useEffect } from "react";
+import { reducer, initialState } from "../state/reducer";
+import Context from ".././context";
+import PublishMessage from "./PublishMessage";
+import MessageBoard from "./MessageBoard";
+import PubSub from "../pubsub";
+import SetUsername from "./SetUsername";
 
 const pubsub = new PubSub();
 
+setTimeout(() => {
+  pubsub.publish({ type: "foo", value: "bar" });
+}, 1000);
+
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  console.log("state: ", state);
 
   useEffect(() => {
     pubsub.addListener({
       message: messageObject => {
         const { channel, message } = messageObject;
-    
-        console.log('Received message', message, 'channel', channel);
-    
         dispatch(message);
       }
-    });    
+    });
+    return () => {};
   }, []);
-
-  console.log('state', state);
 
   return (
     <Context.Provider value={{ state, dispatch, pubsub }}>
       <h2>Reaction</h2>
+      <hr />
       <SetUsername />
       <hr />
       <PublishMessage />
