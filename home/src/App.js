@@ -10,7 +10,6 @@ function App () {
 	const [ showGallery, setShowGallery ] = useState(false);
 	const updateUserQuery = (event) => {
 		setUserQuery(event.target.value);
-		console.log('userQuery', userQuery);
 	};
 
 	const handleKeyPress = (event) => {
@@ -34,21 +33,18 @@ function App () {
 				<button onClick={searchQuery}>Search</button>
 			</div>
 			<hr />
-			<Tasks />
-			<hr />
-
-			<Matrix />
-			<hr />
 			<div>
 				{showGallery ? <Gallery /> : null}
 				<button onClick={toggleShowGallery}>{showGallery ? ' HIDE ' : ' SHOW '} Gallery</button>
 			</div>
-
+			<hr />
+			<Tasks />
 			<hr />
 			<Joke />
-
 			<hr />
 			<Stories />
+			<hr />
+			<Matrix />
 		</div>
 	);
 }
